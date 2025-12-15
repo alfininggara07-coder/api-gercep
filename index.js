@@ -41,4 +41,7 @@ app.use(mapsRouter);
 app.use(courierRouter);
 app.use(deliveryRouter);
 
-export default httpServer;
+// Start the server
+httpServer.listen(PORT, () => {
+  console.log(`Server is running at http://localhost:${PORT}`);
+});
