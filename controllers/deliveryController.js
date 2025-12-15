@@ -1,4 +1,3 @@
-import { io as socket } from "../index.js";
 import Delivery from "../models/Delivery.js";
 
 export const updateDelivery = async (req, res) => {
@@ -46,7 +45,6 @@ export const updateDelivery = async (req, res) => {
       }
     );
     if (updatedDelivery) {
-      socket.emit("delivery-procces", { id, updateData1, updateData2 });
       res.status(200).json({
         code: 200,
         success: true,
@@ -116,7 +114,6 @@ export const updateStatusDelivery = async (req, res) => {
       }
     );
     if (updatedDelivery) {
-      socket.emit("delivery-procces", { id, updateData });
       if (status == "Mengantar") {
         res.status(200).json({
           code: 200,
@@ -176,7 +173,6 @@ export const requestDelivery = async (req, res) => {
       type,
     });
     await newDelivery.save();
-    socket.emit("new-delivery-request", newDelivery);
     res.status(200).json({
       code: 200,
       success: true,
