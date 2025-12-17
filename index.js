@@ -4,6 +4,7 @@ import "./utils/database.js";
 import express from "express";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
+import userRouter from "./routes/userRouter.js";
 import mapsRouter from "./routes/mapsRouter.js";
 import courierRouter from "./routes/courierRouter.js";
 import deliveryRouter from "./routes/deliveryRouter.js";
@@ -26,6 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Routes
 
 app.use(mapsRouter);
+app.use(userRouter);
 app.use(courierRouter);
 app.use(deliveryRouter);
 
