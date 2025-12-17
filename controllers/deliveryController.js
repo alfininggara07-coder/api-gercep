@@ -216,7 +216,7 @@ export const getRequestDelivery = async (req, res) => {
     const { author } = req.query;
     let finished = [];
     let unFinished = [];
-    const deliverys = await Delivery.find();
+    const deliverys = await Delivery.find({"author.username": author});
     if (deliverys.length > 0) {
       deliverys.forEach((elem) => {
         if (elem.status[3].available === true) {
@@ -326,3 +326,4 @@ export const handleDeliveryCancle = async (req, res) => {
     res.status(500).json({ code: 500, success: false, error: error.message });
   }
 };
+
