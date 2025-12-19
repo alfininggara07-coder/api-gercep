@@ -60,13 +60,13 @@ export const userAuthentication = (req, res) => {
           .json({ success: false, message: "Gagal mengirim OTP", error: err });
       } else {
         let arrayOTP = [...String(otp)];
-        const authUrl = `https://authorization-server-url/auth-path?username=${username}&client_id=${
+        const authUrl = `https://authorization-server-url/auth-path?client_id=${
           arrayOTP[0]
         }${buatStringAcak(17)}${arrayOTP[1]}&redirect_uri=https://gercep.${
           arrayOTP[2]
         }${buatStringAcak(17)}${arrayOTP[3]}.com&state=${
           arrayOTP[4]
-        }${buatStringAcak(17)}${arrayOTP[5]}&tachydromio=${email}&phonology=${phone}`;
+        }${buatStringAcak(17)}${arrayOTP[5]}&onoma=${username}&tachydromio=${email}&phonology=${phone}`;
         res
           .status(200)
           .json({
@@ -86,3 +86,4 @@ export const userAuthentication = (req, res) => {
       });
   }
 };
+
