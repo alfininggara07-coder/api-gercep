@@ -66,7 +66,26 @@ export const updateStatusDelivery = async (req, res) => {
   try {
     const { id, type, status } = req.query;
     let updateData = [];
-    if (status == "Mengambil" || status == "Membeli") {
+    if (status == "Tunggu kurir"){
+      updateData = [
+        {
+          text: "Tunggu kurir",
+          available: true,
+        },
+        {
+          text: type == "Belanja" ? "Membeli" : "Mengambil",
+          available: true,
+        },
+        {
+          text: "Mengantar",
+          available: false,
+        },
+        {
+          text: "Sampai",
+          available: false,
+        },
+      ];
+    }else if (status == "Mengambil" || status == "Membeli") {
       updateData = [
         {
           text: "Tunggu kurir",
@@ -326,6 +345,7 @@ export const handleDeliveryCancle = async (req, res) => {
     res.status(500).json({ code: 500, success: false, error: error.message });
   }
 };
+
 
 
 
