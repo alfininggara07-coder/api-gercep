@@ -168,25 +168,25 @@ export const updateStatusDelivery = async (req, res) => {
 export const requestDelivery = async (req, res) => {
   try {
     const {
+      product,
+      url,
       author,
       location1,
       location2,
-      time,
+      count,
       price,
-      distance,
-      desc,
       status,
       courier,
       type,
     } = req.body;
     const newDelivery = new Delivery({
+      product,
+      url,
       author,
       location1,
       location2,
-      time,
+      count,
       price,
-      distance,
-      desc,
       status,
       courier,
       type,
@@ -345,6 +345,7 @@ export const handleDeliveryCancle = async (req, res) => {
     res.status(500).json({ code: 500, success: false, error: error.message });
   }
 };
+
 
 
 
