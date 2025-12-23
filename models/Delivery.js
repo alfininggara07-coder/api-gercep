@@ -13,15 +13,11 @@ const Delivery = mongoose.model("delivery", {
     type: Object,
     required: true,
   },
-  time: {
+  count: {
     type: Number,
     required: true,
   },
   price: {
-    type: Number,
-    required: true,
-  },
-  distance: {
     type: Number,
     required: true,
   },
@@ -30,7 +26,11 @@ const Delivery = mongoose.model("delivery", {
     required: true,
     default: [],
   },
-  desc: {
+  url: {
+    type: String,
+    required: true,
+  },
+  product: {
     type: String,
     required: true,
   },
