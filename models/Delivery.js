@@ -17,7 +17,15 @@ const Delivery = mongoose.model("delivery", {
     type: Number,
     required: true,
   },
+  ongkir: {
+    type: Number,
+    required: true,
+  },
   price: {
+    type: Number,
+    required: true,
+  },
+  total: {
     type: Number,
     required: true,
   },
