@@ -240,7 +240,8 @@ export const getRequestDelivery = async (req, res) => {
 export const getAllRequestDelivery = async (req, res) => {
   try {
     const { courierId } = req.query;
-    const courier = {{ courier: [] }, { "courier.courierId": courierId }],
+    const courier = {
+      $or: [{ courier: [] }, { "courier.courierId": courierId }],
     };
     let totalPrice = 0;
     let finished = [];
@@ -313,6 +314,7 @@ export const handleDeliveryCancle = async (req, res) => {
     res.status(500).json({ code: 500, success: false, error: error.message });
   }
 };
+
 
 
 
