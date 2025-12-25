@@ -254,7 +254,7 @@ export const getAllRequestDelivery = async (req, res) => {
         } else {
           unFinished.push(elem);
         }
-        totalTime = totalTime + elem.time;
+        totalPrice = totalPrice + elem.total;
       });
       finished.reverse();
       unFinished.reverse();
@@ -314,6 +314,7 @@ export const handleDeliveryCancle = async (req, res) => {
     res.status(500).json({ code: 500, success: false, error: error.message });
   }
 };
+
 
 
 
