@@ -13,11 +13,12 @@ const deliveryRouter = express.Router();
 deliveryRouter.get("/deliverys", getRequestDelivery);
 deliveryRouter.post("/delivery/update", updateDelivery);
 deliveryRouter.post("/delivery/request", requestDelivery);
-deliveryRouter.get("/delivery/all", getAllRequestDelivery);
+deliveryRouter.get("/deliverys/all", getAllRequestDelivery);
 deliveryRouter.post("/delivery/cancel", handleDeliveryCancle);
 deliveryRouter.get("/delivery/update/status", updateStatusDelivery);
 
 export default deliveryRouter;
+
 
 
 
