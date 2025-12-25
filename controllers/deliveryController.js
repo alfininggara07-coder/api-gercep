@@ -206,34 +206,6 @@ export const requestDelivery = async (req, res) => {
   }
 };
 
-export const getKipDelivery = async (req, res) => {
-  try {
-    const { courierId } = req.query;
-    const deliverys = await Delivery.find({
-      $and: [
-        { "courier.courierId": courierId },
-        { "status.3.available": false },
-      ],
-    });
-    if (deliverys.length > 0) {
-      res.status(200).json({
-        code: 200,
-        success: true,
-        deliverys,
-        message: "delivery requests found",
-      });
-    } else {
-      res.status(404).json({
-        code: 404,
-        success: false,
-        message: "No delivery requests found",
-      });
-    }
-  } catch (error) {
-    res.status(500).json({ code: 500, success: false, error: error.message });
-  }
-};
-
 export const getRequestDelivery = async (req, res) => {
   try {
     const { author } = req.query;
@@ -268,9 +240,9 @@ export const getRequestDelivery = async (req, res) => {
 export const getAllRequestDelivery = async (req, res) => {
   try {
     const { courierId } = req.query;
-    const courier = {
-      $or: [{ courier: [] }, { "courier.courierId": courierId }],
+    const courier = {{ courier: [] }, { "courier.courierId": courierId }],
     };
+    let totalPrice = 0;
     let finished = [];
     let unFinished = [];
     const deliverys = await Delivery.find(courier);
@@ -281,6 +253,7 @@ export const getAllRequestDelivery = async (req, res) => {
         } else {
           unFinished.push(elem);
         }
+        totalTime = totalTime + elem.time;
       });
       finished.reverse();
       unFinished.reverse();
@@ -289,6 +262,7 @@ export const getAllRequestDelivery = async (req, res) => {
         success: true,
         finished,
         unFinished,
+        totalPrice,
         message: "All delivery requests found",
       });
     } else {
@@ -297,6 +271,7 @@ export const getAllRequestDelivery = async (req, res) => {
         success: false,
         finished,
         unFinished,
+        totalPrice,
         message: "No delivery requests found",
       });
     }
@@ -306,6 +281,7 @@ export const getAllRequestDelivery = async (req, res) => {
       success: false,
       finished: [],
       unFinished: [],
+      totalPrice: 0,
       error: error.message,
     });
   }
@@ -337,6 +313,7 @@ export const handleDeliveryCancle = async (req, res) => {
     res.status(500).json({ code: 500, success: false, error: error.message });
   }
 };
+
 
 
 
