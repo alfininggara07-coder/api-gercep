@@ -245,12 +245,15 @@ export const getAllRequestDelivery = async (req, res) => {
     };
     let totalPrice = 0;
     let finished = [];
+    let onProcess = [];
     let unFinished = [];
     const deliverys = await Delivery.find(courier);
     if (deliverys.length > 0) {
       deliverys.forEach((elem) => {
         if (elem.status[3].available === true) {
           finished.push(elem);
+        }else if(elem.status[1].available === true || elem.status[2].available === true){
+          onProcess.push(elem)
         } else {
           unFinished.push(elem);
         }
@@ -264,6 +267,7 @@ export const getAllRequestDelivery = async (req, res) => {
         finished,
         unFinished,
         totalPrice,
+        onProcess,
         message: "All delivery requests found",
       });
     } else {
@@ -273,6 +277,7 @@ export const getAllRequestDelivery = async (req, res) => {
         finished,
         unFinished,
         totalPrice,
+        onProcess,
         message: "No delivery requests found",
       });
     }
@@ -283,6 +288,7 @@ export const getAllRequestDelivery = async (req, res) => {
       finished: [],
       unFinished: [],
       totalPrice: 0,
+      onProcess: [],
       error: error.message,
     });
   }
@@ -314,6 +320,7 @@ export const handleDeliveryCancle = async (req, res) => {
     res.status(500).json({ code: 500, success: false, error: error.message });
   }
 };
+
 
 
 
