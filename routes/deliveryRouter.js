@@ -2,7 +2,6 @@ import express from "express";
 import {
   updateDelivery,
   requestDelivery,
-  getKipDelivery,
   getRequestDelivery,
   updateStatusDelivery,
   handleDeliveryCancle,
@@ -11,14 +10,14 @@ import {
 
 const deliveryRouter = express.Router();
 
-deliveryRouter.post("/update/delivery", updateDelivery);
 deliveryRouter.get("/deliverys", getRequestDelivery);
-deliveryRouter.get("/kip/deliverys", getKipDelivery);
+deliveryRouter.post("/delivery/update", updateDelivery);
 deliveryRouter.post("/delivery/request", requestDelivery);
-deliveryRouter.get("/all/deliverys", getAllRequestDelivery);
+deliveryRouter.get("/delivery/all", getAllRequestDelivery);
 deliveryRouter.post("/delivery/cancel", handleDeliveryCancle);
-deliveryRouter.get("/update/status/delivery", updateStatusDelivery);
+deliveryRouter.get("/delivery/update/status", updateStatusDelivery);
 
 export default deliveryRouter;
+
 
 
