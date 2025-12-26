@@ -6,11 +6,11 @@ export const updateDelivery = async (req, res) => {
       req.body;
     const updateData1 = [
       {
-        text: "Tunggu kurir",
+        text: "Mencari kurir",
         available: true,
       },
       {
-        text: type == "Belanja" ? "Membeli" : "Mengambil",
+        text: type == "Pembelian" ? "Membeli" : "Mengambil",
         available: true,
       },
       {
@@ -320,6 +320,7 @@ export const handleDeliveryCancle = async (req, res) => {
     res.status(500).json({ code: 500, success: false, error: error.message });
   }
 };
+
 
 
 
