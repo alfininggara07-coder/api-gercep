@@ -66,14 +66,14 @@ export const updateStatusDelivery = async (req, res) => {
   try {
     const { id, type, status } = req.query;
     let updateData = [];
-    if (status == "Tunggu kurir"){
+    if (status == "Mencari kurir"){
       updateData = [
         {
-          text: "Tunggu kurir",
+          text: "Mencari kurir",
           available: true,
         },
         {
-          text: type == "Belanja" ? "Membeli" : "Mengambil",
+          text: type == "Pembelian" ? "Membeli" : "Mengambil",
           available: true,
         },
         {
@@ -88,11 +88,11 @@ export const updateStatusDelivery = async (req, res) => {
     }else if (status == "Mengambil" || status == "Membeli") {
       updateData = [
         {
-          text: "Tunggu kurir",
+          text: "Mencari kurir",
           available: true,
         },
         {
-          text: type == "Belanja" ? "Membeli" : "Mengambil",
+          text: type == "Pembelian" ? "Membeli" : "Mengambil",
           available: true,
         },
         {
@@ -107,11 +107,11 @@ export const updateStatusDelivery = async (req, res) => {
     } else {
       updateData = [
         {
-          text: "Tunggu kurir",
+          text: "Mencari kurir",
           available: true,
         },
         {
-          text: type == "Belanja" ? "Membeli" : "Mengambil",
+          text: type == "Pembelian" ? "Membeli" : "Mengambil",
           available: true,
         },
         {
@@ -320,6 +320,7 @@ export const handleDeliveryCancle = async (req, res) => {
     res.status(500).json({ code: 500, success: false, error: error.message });
   }
 };
+
 
 
 
