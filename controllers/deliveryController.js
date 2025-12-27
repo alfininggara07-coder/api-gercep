@@ -156,8 +156,9 @@ export const requestDelivery = async (req, res) => {
       location2,
       count,
       ongkir,
-      total,
       price,
+      discount,
+      total,
       status,
       courier,
       type,
@@ -171,6 +172,7 @@ export const requestDelivery = async (req, res) => {
       count,
       ongkir,
       price,
+      discount,
       total,
       status,
       courier,
@@ -301,6 +303,7 @@ export const handleDeliveryCancle = async (req, res) => {
     res.status(500).json({ code: 500, success: false, error: error.message });
   }
 };
+
 
 
 
